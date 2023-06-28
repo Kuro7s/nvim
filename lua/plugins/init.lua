@@ -1,4 +1,4 @@
-require("plugins.configs")
+require 'plugins.configs'
 
 -- Setup package manager
 local ensure_packer = function()
@@ -15,7 +15,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Initializing package manager and package listing
-return require('packer').startup(function(use)
+return require 'packer'.startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Themes
@@ -38,6 +38,21 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    -- Completion
+    use 'hrsh7th/nvim-cmp' -- The completion plugin
+    use 'hrsh7th/cmp-buffer' -- buffer completions
+    use 'hrsh7th/cmp-path' -- path completions
+    use 'hrsh7th/cmp-cmdline' -- cmdline completions
+    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
+
+    -- Snippets
+    use 'L3MON4D3/LuaSnip' --snippet engine
+    use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
+
+    -- Lsp Support
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
