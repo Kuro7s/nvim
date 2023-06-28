@@ -18,9 +18,12 @@ local packer_bootstrap = ensure_packer()
 return require 'packer'.startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    -- Themes
-    use 'AhmedAbdulrahman/aylin.vim'
+    -- Color schemes
     use 'catppuccin/nvim'
+    use 'AhmedAbdulrahman/aylin.vim'
+    use 'folke/tokyonight.nvim'
+    use 'rebelot/kanagawa.nvim'
+    use 'morhetz/gruvbox'
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     -- Icons (used by barbar, nvim-tree, and lualine)
@@ -28,7 +31,7 @@ return require 'packer'.startup(function(use)
     -- Git
     use 'lewis6991/gitsigns.nvim'
     -- Tabline
-    use 'romgrk/barbar.nvim'
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
     -- Statusline
     use 'nvim-lualine/lualine.nvim'
     -- File explorer
