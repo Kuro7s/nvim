@@ -31,7 +31,7 @@ require 'telescope'.setup {
     }
 }
 
-local function select_colorscheme(buf)
+function select_colorscheme(buf)
     local colorscheme = require('telescope.actions.state').get_selected_entry(buf).value
     local file = io.open(require('core.colorscheme_path'), 'w')
     file:write(colorscheme)
