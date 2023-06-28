@@ -20,10 +20,10 @@ require 'telescope'.setup {
         colorscheme = {
             mappings = {
                 i = {
-                    ['<CR>'] = select_colorscheme,
+                    ['<CR>'] = function(buf) select_colorscheme(buf) end,
                 },
                 n = {
-                    ['<CR>'] = select_colorscheme,
+                    ['<CR>'] = function(buf) select_colorscheme(buf) end,
                 },
             },
             enable_preview = true,
@@ -31,9 +31,9 @@ require 'telescope'.setup {
     }
 }
 
-local select_colorscheme = function(buf)
+local function select_colorscheme(buf)
     local colorscheme = require('telescope.actions.state').get_selected_entry(buf).value
-    local file = io.open(vim.fn.stdpath('config') .. '/colorscheme.txt', 'w')
+    local file = io.open(require('core.colorscheme_path'), 'w')
     file:write(colorscheme)
     file:close()
     require('telescope.actions').close(buf)
