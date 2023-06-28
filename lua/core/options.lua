@@ -1,10 +1,6 @@
 local o = vim.opt
 local g = vim.g
 
--- Disable netrw
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-
 o.splitright = true
 o.splitbelow = true
 o.clipboard = 'unnamedplus'
@@ -28,5 +24,13 @@ o.autoindent = true
 o.smartindent = true
 -- Colorscheme
 o.termguicolors = true
-vim.background = 'dark'
+o.background = 'dark'
+-- Disable netrw
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+-- SHell
+o.shell = 'nu' -- Change to your fav shell :)
+o.shellcmdflag = '-c'
+o.shellquote = ''
+o.shellxquote = ''
 

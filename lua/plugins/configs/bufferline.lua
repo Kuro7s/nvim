@@ -3,7 +3,7 @@ require 'bufferline'.setup {
         offsets = {
             {
                 filetype = "NvimTree",
-                text = "Explorer",
+                text = "EXPLORER",
                 separator = true,
             },
         },

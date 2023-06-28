@@ -18,27 +18,10 @@ require 'telescope'.setup {
             },
         },
         colorscheme = {
-            mappings = {
-                i = {
-                    ['<CR>'] = function(buf) select_colorscheme(buf) end,
-                },
-                n = {
-                    ['<CR>'] = function(buf) select_colorscheme(buf) end,
-                },
-            },
             enable_preview = true,
         },
     }
 }
-
-function select_colorscheme(buf)
-    local colorscheme = require('telescope.actions.state').get_selected_entry(buf).value
-    local file = io.open(require('core.colorscheme_path'), 'w')
-    file:write(colorscheme)
-    file:close()
-    require('telescope.actions').close(buf)
-    vim.cmd.colorscheme(colorscheme)
-end
 
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
