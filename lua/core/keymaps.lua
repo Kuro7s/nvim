@@ -1,5 +1,5 @@
 local function keymap(mode, lhs, rhs)
-   vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true }) 
+   vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
 vim.g.mapleader = ' '
