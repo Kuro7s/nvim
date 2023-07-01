@@ -1,8 +1,8 @@
-vim.api.nvim_set_hl(0, 'IndentBlanklineContextChar', { link = 'NormalNC' })
+vim.g.indent_blankline_filetype_exclude = { 'dashboard' }
 
 require 'indent_blankline'.setup {
-    show_current_context = true,
     char_highlight_list = {
         'LineNr', -- Default looks horrible with oxocarbon
     },
 }
+

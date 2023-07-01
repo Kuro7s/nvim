@@ -8,9 +8,7 @@ bufferline.setup {
                 separator = false,
             },
         },
-        separator_style = 'thin',
         diagnostics = 'nvim_lsp',
-        always_show_bufferline = true, 
     },
 }
 

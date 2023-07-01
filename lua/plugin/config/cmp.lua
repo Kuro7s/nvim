@@ -2,8 +2,6 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
 require 'luasnip.loaders.from_vscode'.lazy_load()
-require 'luasnip.loaders.from_snipmate'.lazy_load()
-require 'luasnip.loaders.from_lua'.lazy_load()
 
 local check_backspace = function()
     local col = vim.fn.col '.' - 1
@@ -107,7 +105,6 @@ cmp.setup {
             vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
                 nvim_lsp = '󰞵',
-                treesitter = '',
                 luasnip = '󱐌',
                 buffer = '',
                 path = '',
@@ -119,9 +116,6 @@ cmp.setup {
     sources = {
         {
             name = 'luasnip',
-        },
-        {
-            name = 'treesitter',
         },
         {
             name = 'nvim_lsp'

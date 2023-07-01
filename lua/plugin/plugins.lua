@@ -1,9 +1,6 @@
 local plugins = {
     -- Color Schemes
     'catppuccin/nvim',
-    'folke/tokyonight.nvim',
-    'rebelot/kanagawa.nvim',
-    'ellisonleao/gruvbox.nvim',
     { 'rose-pine/neovim', name = 'rose-pine' },
     'nyoom-engineering/oxocarbon.nvim',
     -- Treesitter
@@ -24,10 +21,8 @@ local plugins = {
     'hrsh7th/nvim-cmp', -- The completion plugin
     'hrsh7th/cmp-buffer', -- buffer completions
     'hrsh7th/cmp-path', -- path completions
-    'hrsh7th/cmp-cmdline', -- cmdline completions
     'hrsh7th/cmp-nvim-lsp', -- LSP
     'saadparwaiz1/cmp_luasnip', -- snippet completions
-    'ray-x/cmp-treesitter', -- Treesitter source
     'hrsh7th/cmp-nvim-lsp-signature-help',
     -- Snippets
     'L3MON4D3/LuaSnip', --snippet engine
@@ -46,20 +41,27 @@ local plugins = {
         config = function()
             require 'dashboard'.setup {
                 theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                }
             }
         end,
         dependencies = {'nvim-tree/nvim-web-devicons'}
     },
-    -- Todo comments highlights
+    -- Comments
     'folke/todo-comments.nvim',
-    -- Git support
-    'tpope/vim-fugitive',
-    -- Misc
     'numtostr/comment.nvim',
+    -- Misc
+    { 'j-hui/fidget.nvim', tag = 'legacy' },
+    { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
     'nvim-lua/plenary.nvim',
     'Saecki/crates.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'windwp/nvim-autopairs',
+    -- Startup time
+    'dstein64/vim-startuptime',
 }
 
 return plugins

@@ -1,3 +1,4 @@
+require 'plugin.config.fidget'
 require 'plugin.config.fugitive'
 require 'plugin.config.nvim-tree'
 require 'plugin.config.bufferline'
@@ -12,4 +13,5 @@ require 'plugin.config.toggleterm'
 require 'plugin.config.crates'
 require 'plugin.config.indent-blankline'
 require 'plugin.config.autopairs'
+require 'plugin.config.trouble'
 

@@ -1,7 +1,7 @@
 local io = require 'io'
 
 -- Default is Catppuccin Mocha https://github.com/catppuccin/catppuccin
-local colorscheme_path = vim.fn.stdpath('config') .. '/colorscheme.txt'
+local colorscheme_path = vim.fn.stdpath('config') .. '/colorscheme'
 
 local colorscheme = 'catppuccin-mocha'
 local current_cs_file = io.open(colorscheme_path, 'r')
