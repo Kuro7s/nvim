@@ -33,4 +33,3 @@ o.shell = 'nu' -- Change to your fav shell :)
 o.shellcmdflag = '-c'
 o.shellquote = ''
 o.shellxquote = ''
-

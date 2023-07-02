@@ -1,7 +1,7 @@
-require 'gitsigns'.setup {
+local opts = {
     signs = {
         delete = { text = "󰍵" },
-        topdelete = { text = "‾" },
     },
 }
 
+return opts

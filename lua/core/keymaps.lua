@@ -1,5 +1,5 @@
 local function keymap(mode, lhs, rhs)
-   vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
+    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
 vim.g.mapleader = ' '
@@ -41,4 +41,3 @@ keymap('x', 'J', ':move ">+1<CR>gv-gv')
 keymap('x', 'K', ':move "<-2<CR>gv-gv')
 keymap('x', '<A-j>', ':move ">+1<CR>gv-gv')
 keymap('x', '<A-k>', ':move "<-2<CR>gv-gv')
-

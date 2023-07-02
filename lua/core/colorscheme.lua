@@ -20,4 +20,4 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end
 })
 
-return colorscheme
+vim.cmd.colorscheme(colorscheme)

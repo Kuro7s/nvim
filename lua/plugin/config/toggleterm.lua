@@ -1,4 +1,4 @@
-require 'toggleterm'.setup {
+local opts = {
     open_mapping = [[<A-;>]],
     direction = 'float',
     float_opts = {
@@ -6,5 +6,4 @@ require 'toggleterm'.setup {
     }
 }
 
-vim.cmd('autocmd! TermOpen term://*')
-
+return opts

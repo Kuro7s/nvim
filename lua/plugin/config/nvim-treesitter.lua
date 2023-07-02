@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+local opts = {
     ensure_installed = {
         'rust',
         'cpp',
@@ -19,3 +19,4 @@ require 'nvim-treesitter.configs'.setup {
     },
 }
 
+return opts
