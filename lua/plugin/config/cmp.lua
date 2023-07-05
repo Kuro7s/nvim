@@ -19,7 +19,7 @@ cmp.setup {
         ['<A-j>'] = cmp.mapping.select_next_item(),
         ['<A-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), {'i', 'c'}),
         ['<A-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), {'i', 'c'}),
-        ['<A-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<A-c>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
         ['<A-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove then
                                         -- default `<C-y>` mapping.
         ['<A-e>'] = cmp.mapping {
