@@ -1,4 +1,4 @@
-vim.loader.enable()
+vim.loader.enable() -- faster load times?
 
 require 'core'
 require 'plugin'

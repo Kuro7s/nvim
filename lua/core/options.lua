@@ -2,6 +2,7 @@ local o = vim.opt
 local g = vim.g
 
 o.splitright = true
+o.signcolumn = 'yes'
 o.splitbelow = true
 o.clipboard = 'unnamedplus'
 o.guifont = 'CaskaydiaCove Nerd Font:h12'

@@ -7,7 +7,9 @@ require 'nvim-tree'.setup {
         enable = true,
     },
     renderer = {
-        root_folder_label = function(path) return '' end,
+        root_folder_label = function ()
+            return ''
+        end,
         indent_markers = {
             enable = true,
             icons = {
