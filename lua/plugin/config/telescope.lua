@@ -31,5 +31,3 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fc', builtin.colorscheme, {})
 vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
 
-return opts
-

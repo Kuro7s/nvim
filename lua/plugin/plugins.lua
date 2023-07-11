@@ -8,6 +8,7 @@ local plugins = {
         config = true,
     },
     'projekt0n/github-nvim-theme',
+    'Mofiqul/vscode.nvim',
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
@@ -35,16 +36,16 @@ local plugins = {
     {
         'nvim-tree/nvim-tree.lua',
         init = function()
-            local args = vim.fn.argv()
-            for _, file_path in ipairs(args) do
-                if vim.fn.isdirectory(file_path) == 1 then
-                    require 'nvim-tree.api'.tree.open()
-                end
-            end
+            vim.api.nvim_create_autocmd('BufEnter', {
+                callback = function(e)
+                    if vim.fn.isdirectory(e.file) == 1 then
+                        require 'nvim-tree.api'.tree.open(e.file)
+                    end
+                end,
+            })
         end,
         keys = {
             { '<leader>to', mode = 'n' },
-            { '<leader>ti', mode = 'n' },
             { '<leader>tc', mode = 'n' },
             { '<leader>tk', mode = 'n' },
             { '<leader>tt', mode = 'n' },
@@ -102,8 +103,8 @@ local plugins = {
     {
         'neovim/nvim-lspconfig',
         config = function()
-            require 'plugin.config.lsp'
-        end
+	    require 'plugin.config.lsp'
+	end
     },
     { 'simrat39/rust-tools.nvim', dependencies = { 'neovim/nvim-lspconfig' } },
     -- Terminal

@@ -1,7 +1,6 @@
 local o = vim.opt
 local g = vim.g
 
-o.syntax = 'on'
 o.splitright = true
 o.signcolumn = 'yes'
 o.splitbelow = true

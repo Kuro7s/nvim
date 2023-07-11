@@ -42,8 +42,7 @@ require 'nvim-tree'.setup {
 }
 
 -- Open without focusing tree
-vim.keymap.set('n', '<leader>to', ':NvimTreeOpen<cr>:silent bp<cr>', {})
-vim.keymap.set('n', '<leader>ti', ':NvimTreeOpen<cr>', {})
+vim.keymap.set('n', '<leader>to', ':NvimTreeOpen<cr>', {})
 vim.keymap.set('n', '<leader>tc', ':NvimTreeClose<cr>', {})
 vim.keymap.set('n', '<leader>tk', ':NvimTreeCollapse<cr>', {})
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<cr>', {})
