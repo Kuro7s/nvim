@@ -11,21 +11,16 @@ end
 cmp.setup {
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body)
         end
     },
     mapping = {
         ['<A-k>'] = cmp.mapping.select_prev_item(),
         ['<A-j>'] = cmp.mapping.select_next_item(),
-        ['<A-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), {'i', 'c'}),
-        ['<A-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), {'i', 'c'}),
-        ['<A-c>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
-        ['<A-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove then
-                                        -- default `<C-y>` mapping.
-        ['<A-e>'] = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close()
-        },
+        ['<Up>'] = cmp.mapping.select_prev_item(),
+        ['<Down>'] = cmp.mapping.select_next_item(),
+        ['<S-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), {'i', 'c'}),
+        ['<S-j>'] = cmp.mapping(cmp.mapping.scroll_docs(1), {'i', 'c'}),
         -- Accept currently selected item. If none selected, `select` first item.
         -- Set `select` to `false` to only confirm explicitly selected items.
         ['<CR>'] = cmp.mapping.confirm {
@@ -115,27 +110,20 @@ cmp.setup {
     },
     sources = {
         {
-            name = 'luasnip',
+            name = 'crates'
         },
         {
             name = 'nvim_lsp'
         },
         {
-            name = 'buffer'
+            name = 'luasnip',
         },
         {
-            name = 'crates'
+            name = 'buffer'
         },
         {
             name = 'path'
         },
-        {
-            name = 'nvim_lsp_signature_help'
-        }
-    },
-    confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false
     },
     window = {
         completion = cmp.config.window.bordered(),

@@ -3,12 +3,11 @@ local plugins = {
     'catppuccin/nvim',
     {
         'rose-pine/neovim',
+        event = 'ColorSchemePre',
         name = 'rose-pine',
-        config = function()
-            require 'rose-pine'.setup()
-        end
+        config = true,
     },
-    'nyoom-engineering/oxocarbon.nvim',
+    'projekt0n/github-nvim-theme',
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
@@ -26,21 +25,40 @@ local plugins = {
     {
         'lewis6991/gitsigns.nvim',
         opts = require 'plugin.config.gitsigns',
-        config = function(_, opts)
-            require 'gitsigns'.setup(opts)
-        end
     },
     -- Statusline
     {
         'nvim-lualine/lualine.nvim',
         opts = require 'plugin.config.lualine',
-        config = function(_, opts)
-            require 'lualine'.setup(opts)
-        end
     },
     -- File explorer
     {
         'nvim-tree/nvim-tree.lua',
+        init = function()
+            local args = vim.fn.argv()
+            for _, file_path in ipairs(args) do
+                if vim.fn.isdirectory(file_path) == 1 then
+                    require 'nvim-tree.api'.tree.open()
+                end
+            end
+        end,
+        keys = {
+            { '<leader>to', mode = 'n' },
+            { '<leader>ti', mode = 'n' },
+            { '<leader>tc', mode = 'n' },
+            { '<leader>tk', mode = 'n' },
+            { '<leader>tt', mode = 'n' },
+            { '<leader>tf', mode = 'n' },
+            { '<leader>tr', mode = 'n' },
+        },
+        cmd = {
+            'NvimTreeOpen',
+            'NvimTreeClose',
+            'NvimTreeCollapse',
+            'NvimTreeToggle',
+            'NvimTreeFocus',
+            'NvimTreeRefresh',
+        },
         config = function()
             require 'plugin.config.nvim-tree'
         end
@@ -75,9 +93,9 @@ local plugins = {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
     'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
+    'ray-x/lsp_signature.nvim',
     -- Lsp support (lsp.lua)
     'williamboman/mason.nvim',
     { 'williamboman/mason-lspconfig.nvim' },
@@ -92,18 +110,12 @@ local plugins = {
     {
         'akinsho/toggleterm.nvim',
         opts = require 'plugin.config.toggleterm',
-        config = function(_, opts)
-            require 'toggleterm'.setup(opts)
-        end
-    },
+   },
     -- Dashboard
     {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
         opts = require 'plugin.config.dashboard',
-        config = function(_, opts)
-            require 'dashboard'.setup(opts)
-        end,
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     -- Comments
@@ -116,9 +128,7 @@ local plugins = {
             { 'gbc', mode = "n", },
             { 'gb',  mode = { 'n', 'o', 'x' }, },
         },
-        config = function()
-            require 'Comment'.setup()
-        end
+        config = true,
     },
     -- Startup time
     'dstein64/vim-startuptime',
@@ -126,22 +136,16 @@ local plugins = {
     {
         'j-hui/fidget.nvim',
         tag = 'legacy',
-        config = function()
-            require 'fidget'.setup()
-        end,
+        config = true,
     },
     'nvim-lua/plenary.nvim',
     {
         'Saecki/crates.nvim',
-        config = function()
-            require 'crates'.setup()
-        end
+        config = true,
     },
     {
         'windwp/nvim-autopairs',
-        config = function()
-            require 'nvim-autopairs'.setup()
-        end
+        config = true,
     },
 }
 

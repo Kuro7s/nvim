@@ -12,7 +12,7 @@ require 'telescope'.setup {
                 '--smart-case',
                 '--hidden',
                 '--glob',
-                '!{.git/*,target/*,node_modules/*}',
+                '!{.git/*,target/*,bin/*,build/*,out/*,dist/*,node_modules/*,lib/*,ext/*,external/*,deps/*,third_party/*,third-party/*,3rd-party/*,.cache/*}',
                 '--path-separator',
                 '/',
             },

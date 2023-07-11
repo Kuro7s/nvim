@@ -17,6 +17,10 @@ keymap('n', '<C-Down>', ':resize -2<CR>')
 keymap('n', '<C-Left>', ':vertical resize -2<CR>')
 keymap('n', '<C-Right>', ':vertical resize +2<CR>')
 
+-- Ident left & right
+keymap('n', '<', 'v<<ESC>')
+keymap('n', '>', 'v><ESC>')
+
 -- Navigate buffers
 keymap('n', '<A-l>', ':bnext<CR>')
 keymap('n', '<A-h>', ':bprevious<CR>')
@@ -29,7 +33,6 @@ keymap('v', '>', '>gv')
 -- Move text up and down
 keymap('v', '<C-j>', ':m .+1<CR>==')
 keymap('v', '<C-k>', ':m .-2<CR>==')
-keymap('v', 'p', '"_dP')
 
 -- Visual Block --
 -- Stay in indent mode
@@ -37,7 +40,5 @@ keymap('x', '<', '<gv')
 keymap('x', '>', '>gv')
 
 -- Move text up and down
-keymap('x', 'J', ':move ">+1<CR>gv-gv')
-keymap('x', 'K', ':move "<-2<CR>gv-gv')
-keymap('x', '<A-j>', ':move ">+1<CR>gv-gv')
-keymap('x', '<A-k>', ':move "<-2<CR>gv-gv')
+keymap('x', 'C-j', ':move ">+1<CR>gv-gv')
+keymap('x', 'C-k', ':move "<-2<CR>gv-gv')

@@ -1,11 +1,12 @@
 local o = vim.opt
 local g = vim.g
 
+o.syntax = 'on'
 o.splitright = true
 o.signcolumn = 'yes'
 o.splitbelow = true
 o.clipboard = 'unnamedplus'
-o.guifont = 'CaskaydiaCove Nerd Font:h12'
+o.guifont = 'JetBrainsMono Nerd Font:h12'
 g.editorconfig = true
 o.autoread = true
 o.swapfile = false

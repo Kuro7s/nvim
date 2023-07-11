@@ -6,6 +6,7 @@ require 'nvim-tree'.setup {
     update_focused_file = {
         enable = true,
     },
+
     renderer = {
         root_folder_label = function ()
             return ''
@@ -35,10 +36,16 @@ require 'nvim-tree'.setup {
             },
         },
     },
+    git = {
+        ignore = false,
+    },
 }
 
-vim.keymap.set('n', '<leader>to', ':NvimTreeOpen<cr>', {})
+-- Open without focusing tree
+vim.keymap.set('n', '<leader>to', ':NvimTreeOpen<cr>:silent bp<cr>', {})
+vim.keymap.set('n', '<leader>ti', ':NvimTreeOpen<cr>', {})
 vim.keymap.set('n', '<leader>tc', ':NvimTreeClose<cr>', {})
+vim.keymap.set('n', '<leader>tk', ':NvimTreeCollapse<cr>', {})
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<cr>', {})
 vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<cr>', {})
 vim.keymap.set('n', '<leader>tr', ':NvimTreeRefresh<cr>', {})

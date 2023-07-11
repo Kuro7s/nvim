@@ -3,21 +3,26 @@ require 'mason-lspconfig'.setup {
     automatic_installation = true,
 }
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+local lspconfig = require 'lspconfig'
+
+local lsp = vim.lsp
+lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'rounded' })
+lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, {
+    border = 'rounded'
+})
 
 local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = ''
-  })
+    vim.fn.sign_define(opts.name, {
+        texthl = opts.name,
+        text = opts.text,
+        numhl = ''
+    })
 end
 
-sign({name = 'DiagnosticSignError', text = ''})
-sign({name = 'DiagnosticSignWarn', text = ''})
-sign({name = 'DiagnosticSignHint', text = ''})
-sign({name = 'DiagnosticSignInfo', text = ''})
+sign({ name = 'DiagnosticSignError', text = '' })
+sign({ name = 'DiagnosticSignWarn', text = '' })
+sign({ name = 'DiagnosticSignHint', text = '' })
+sign({ name = 'DiagnosticSignInfo', text = '' })
 
 vim.diagnostic.config({
     signs = true,
@@ -27,30 +32,31 @@ vim.diagnostic.config({
     },
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 local function keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, {})
 end
 
-local on_attach = function(_, _)
-    keymap('n', '<leader>rn', vim.lsp.buf.rename)
-    keymap('n', '<leader>ca', vim.lsp.buf.code_action)
+local on_attach = function(_, bufnr)
 
-    keymap('n', 'gd', vim.lsp.buf.definition)
-    keymap('n', 'gi', vim.lsp.buf.implementation)
+    keymap('n', '<leader>rn', lsp.buf.rename)
+    keymap('n', '<leader>ca', lsp.buf.code_action)
+
+    keymap('n', 'gd', lsp.buf.definition)
+    keymap('n', 'gi', lsp.buf.implementation)
     keymap('n', 'gr', require 'telescope.builtin'.lsp_references)
-    keymap('n', 'K', vim.lsp.buf.hover)
+    keymap('n', 'K', lsp.buf.hover)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Lua
-require 'lspconfig'.lua_ls.setup {
+lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
 -- Python
-require 'lspconfig'.pyright.setup {
+lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
@@ -61,5 +67,20 @@ require 'rust-tools'.setup {
         on_attach = on_attach,
         capabilities = capabilities,
     },
+}
+
+-- C/C++
+lspconfig.clangd.setup {
+    server = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    },
+}
+
+require 'lsp_signature'.setup {
+    hint_enable = false,
+    handler_opts = {
+        border = 'rounded'
+    }
 }
 
