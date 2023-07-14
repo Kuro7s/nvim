@@ -87,7 +87,10 @@ local plugins = {
     {
         'akinsho/toggleterm.nvim',
         opts = require 'plugin.config.toggleterm',
-   },
+    },
+    -- Statusline
+    -- TODO: Configure this thing
+    'willothy/nvim-cokeline',
     -- Dashboard
     {
         'glepnir/dashboard-nvim',
