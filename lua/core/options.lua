@@ -1,12 +1,12 @@
 local o = vim.opt
 local g = vim.g
 
+vim.g.mapleader = ' '
+
 o.splitright = true
 o.signcolumn = 'yes'
 o.splitbelow = true
 o.clipboard = 'unnamedplus'
-o.guifont = 'JetBrainsMono Nerd Font:h12'
-g.editorconfig = true
 o.autoread = true
 o.swapfile = false
 o.backup = false
@@ -15,6 +15,7 @@ o.undofile = true
 o.wrap = false
 -- Line numbers
 o.number = true
+o.numberwidth = 2
 o.relativenumber = true
 -- Indentation
 o.tabstop = 4

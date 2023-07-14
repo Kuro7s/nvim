@@ -1,8 +1,8 @@
+-- TODO: Change the layout of this so keymaps are storead as a table and move plugin keymaps here.
+
 local function keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
-
-vim.g.mapleader = ' '
 
 -- Normal --
 -- Better window navigation

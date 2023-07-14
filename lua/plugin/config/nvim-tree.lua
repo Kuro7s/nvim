@@ -1,7 +1,7 @@
 require 'nvim-tree'.setup {
-    filesystem_watchers = {
-        enable = true,
-    },
+    sync_root_with_cwd = true,
+    hijack_cursor = true,
+    disable_netrw = true,
 
     update_focused_file = {
         enable = true,
@@ -11,11 +11,7 @@ require 'nvim-tree'.setup {
         root_folder_label = false,
         indent_markers = {
             enable = true,
-            icons = {
-                corner = "╰",
-            },
         },
-
         icons = {
             git_placement = 'after',
             glyphs = {
@@ -28,8 +24,14 @@ require 'nvim-tree'.setup {
                     open = "",
                     symlink = "",
                     symlink_open = "",
-                    arrow_open = "",
-                    arrow_closed = "",
+                },
+                git = {
+                    unstaged = '',
+                    unmerged = '',
+                    renamed = '',
+                    deleted = '',
+                    untracked = '',
+                    staged = '',
                 },
             },
         },
@@ -39,7 +41,6 @@ require 'nvim-tree'.setup {
     },
 }
 
--- Open without focusing tree
 vim.keymap.set('n', '<leader>to', ':NvimTreeOpen<cr>', {})
 vim.keymap.set('n', '<leader>tc', ':NvimTreeClose<cr>', {})
 vim.keymap.set('n', '<leader>tk', ':NvimTreeCollapse<cr>', {})

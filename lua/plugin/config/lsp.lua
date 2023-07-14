@@ -66,6 +66,13 @@ require 'rust-tools'.setup {
     server = {
         on_attach = on_attach,
         capabilities = capabilities,
+        settings = {
+            ['rust-analyzer'] = {
+                check = {
+                    command = 'clippy',
+                },
+            },
+        },
     },
 }
 
