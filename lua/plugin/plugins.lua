@@ -1,6 +1,12 @@
 local plugins = {
     -- Color Schemes
-    'catppuccin/nvim',
+    {
+        'catppuccin/nvim',
+        opts = require 'plugin.config.catppuccin',
+        config = function(_, opts)
+            require 'catppuccin'.setup(opts)
+        end,
+    },
     {
         'rose-pine/neovim',
         event = 'ColorSchemePre',
@@ -26,7 +32,7 @@ local plugins = {
     -- Git
     {
         'lewis6991/gitsigns.nvim',
-        opts = require 'plugin.config.gitsigns',
+         opts = require 'plugin.config.gitsigns',
     },
     -- Statusline
     {
@@ -36,6 +42,31 @@ local plugins = {
     -- File explorer
     {
         'nvim-tree/nvim-tree.lua',
+        init = function()
+            vim.api.nvim_create_autocmd('BufEnter', {
+                callback = function(e)
+                    if vim.fn.isdirectory(e.file) == 1 then
+                        require 'nvim-tree.api'.tree.open(e.file)
+                    end
+                end,
+            })
+        end,
+        keys = {
+            { '<leader>to', mode = 'n' },
+            { '<leader>tc', mode = 'n' },
+            { '<leader>tk', mode = 'n' },
+            { '<leader>tt', mode = 'n' },
+            { '<leader>tf', mode = 'n' },
+            { '<leader>tr', mode = 'n' },
+        },
+        cmd = {
+            'NvimTreeOpen',
+            'NvimTreeClose',
+            'NvimTreeCollapse',
+            'NvimTreeToggle',
+            'NvimTreeFocus',
+            'NvimTreeRefresh',
+        },
         config = function()
             require 'plugin.config.nvim-tree'
         end
@@ -88,9 +119,6 @@ local plugins = {
         'akinsho/toggleterm.nvim',
         opts = require 'plugin.config.toggleterm',
     },
-    -- Statusline
-    -- TODO: Configure this thing
-    'willothy/nvim-cokeline',
     -- Dashboard
     {
         'glepnir/dashboard-nvim',
@@ -130,11 +158,6 @@ local plugins = {
         'windwp/nvim-autopairs',
         config = true,
     },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        opts = require 'plugin.config.indent-blankline',
-        config = true,
-    }
 }
 
 return plugins
